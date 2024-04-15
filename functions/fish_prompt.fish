@@ -1,18 +1,5 @@
 # name: beloglazov
 
-function _git_branch_name
-  echo (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
-end
-
-function _is_git_dirty
-  echo (command git status -s --ignore-submodules=dirty 2> /dev/null)
-end
-
-function _git_ahead_count -a branch_name
-  echo (command git log origin/$branch_name..HEAD 2> /dev/null | \
-    grep '^commit' | wc -l | tr -d ' ')
-end
-
 function fish_prompt
   set -l last_status $status
 
